@@ -1,5 +1,6 @@
 import com.peelsannaw.mq.abstarct.Publisher;
 import com.peelsannaw.mq.abstarct.Subscriber;
+import com.peelsannaw.mq.abstarct.impl.SimplePublisher;
 import com.peelsannaw.mq.entity.Channel;
 import com.peelsannaw.mq.entity.Message;
 import com.peelsannaw.mq.service.OrderService;
@@ -19,9 +20,9 @@ public class PubSubTest {
     }
 
     public static void simpleTest() {
-        Channel channel = new Channel();
+        Channel channel = new Channel("testChannel");
 
-        Publisher publisher = null;
+        Publisher publisher = new SimplePublisher();
         publisher.bindChannel(channel);
 
         Subscriber userServiceSubscriber = null;

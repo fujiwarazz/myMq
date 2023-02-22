@@ -5,6 +5,7 @@ import com.peelsannaw.mq.entity.Message;
 import com.peelsannaw.mq.entity.Order;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @Author peelsannaw
@@ -25,8 +26,9 @@ public class OrderService {
                 .setCount(count)
                 .setTotalPrice(totalPrice)
                 .setUserName(userName);
-        publisher.publicMessage(Message.<Order>of(order));
-//        repertoryService.inventoryReduction(order);
-//        userService.userPayment(order);
+
+        publisher.publishMessage(Message.
+                <Order>of(order,"testMessage","all",new Date()));
+
     }
 }

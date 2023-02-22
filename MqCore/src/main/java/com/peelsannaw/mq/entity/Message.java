@@ -9,61 +9,50 @@ import java.util.Date;
  */
 public class Message<T> {
 
-    private T data;
-    private Class<T> dataType;
+    private final T data;
+    private final Class<T> dataType;
 
-    private String title;
-    private Date publishTime;
-    private String topic = "ALL";
+    private final String title;
+    private final Date publishTime;
+    private final String topic;
 
 
     public Class<T> getDataType() {
         return dataType;
     }
 
-    public Message(T data) {
+    public Message(T data,String title,String topic,Date publishTime) {
         this.data = data;
+        this.topic = topic;
+        this.dataType = (Class<T>) data.getClass();
+        this.publishTime = publishTime;
+        this.title = title;
     }
 
-    public static <U> Message<U> of(U data) {
-        return new Message<U>(data);
+    public static <U> Message<U> of(U data,String title,String topic,Date publishTime) {
+        return new Message<U>(data,title,topic,publishTime);
     }
 
-    public void setDataType(Class<T> dataType) {
-        this.dataType = dataType;
-    }
 
     public T getData() {
         return data;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public Date getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Date publishTime) {
-        this.publishTime = publishTime;
-    }
 
     public String getTopic() {
         return topic;
     }
 
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
 
     @Override
     public String toString() {

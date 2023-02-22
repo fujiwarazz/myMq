@@ -15,7 +15,7 @@ import com.peelsannaw.mq.entity.Message;
  */
 public interface Publisher {
 
-    void publicMessage(Message<?> message);
+    void publishMessage(Message<?> message);
 
     void bindChannel(Channel channel);
 }
